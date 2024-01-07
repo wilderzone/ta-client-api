@@ -1,0 +1,26 @@
+{
+	"name": "ta-client-api",
+	"version": "0.1.0",
+	"description": "Control TA programmatically with JS.",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"tribes",
+		"ascend",
+		"TA",
+		"game",
+		"game-server",
+		"typescript",
+		"ts",
+		"node"
+	],
+	"author": "Giga <gigabyte5671@gmail.com>",
+	"license": "MIT",
+	"devDependencies": {
+		"typescript": "^5.3.3"
+	}
+}

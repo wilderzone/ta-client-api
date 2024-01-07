@@ -1,2 +1,3 @@
-# ta-commander
-Launch TA programmatically via JS. 
+# TA Client API
+
+Control TA programmatically with JS.
