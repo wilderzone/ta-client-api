@@ -8,6 +8,7 @@ type GameClientEventListener = () => (void | Promise<void>);
 export class GameClient {
 	#config: Config;
 	#client?: ChildProcess;
+	#debug = false;
 	#listeners: Record<GameClientEvent, Array<GameClientEventListener>> = {
 		start: [],
 		stop: []
@@ -28,6 +29,15 @@ export class GameClient {
 	 */
 	public get path (): string {
 		return this.#config.path;
+	}
+
+	/**
+	 * Enable debugging output.
+	 * @param enable Set `true` *(default)* to enable debug output, `false` to disable.
+	 */
+	public debug (enable = true): GameClient {
+		this.#debug = enable;
+		return this;
 	}
 
 	/**
@@ -105,6 +115,7 @@ export class GameClient {
 		// Watch the stdout stream for the "ready" message.
 		this.#client.stdout?.on('data', (data: Buffer) => {
 			const line = data.toString();
+			if (this.#debug) console.info('\x1b[2m>\x1b[0m', line);
 			if (
 				line.includes('Warning, Failed to compile Material dev_efx_elechold.MAT_EFX_DEV_SubUV_bolts')
 				|| line.includes('Warning, Failed to load \'Font None.ITC Franklin Gothic Std Med\'')
