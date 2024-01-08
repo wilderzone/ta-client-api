@@ -29,3 +29,18 @@ client
 	.resolution(700, 450)     // Set the resolution.
 	.start();                 // Launch the game.
 ```
+
+### Events
+
+You can register callback functions to listen for certain events emitted by the game client.  
+For example, to log a message when the client starts:
+```js
+client.on('start', () => {
+	console.log('Woohoo!');
+});
+```
+
+| Event   | Description                                                                     |
+| :------ | :------------------------------------------------------------------------------ |
+| `start` | Emitted when the game client has started up and is ready to be interacted with. |
+| `stop`  | Emitted when the game client has stopped running (either intentionally, or from a crash) and is no longer accessible. |
