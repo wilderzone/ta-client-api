@@ -1,8 +1,11 @@
+import type { maps } from './maps.js';
+
 /**
  * Game client configuration.
  */
 export class Config {
 	fullscreen = true;
+	map?: (typeof maps)[number];
 	position = {
 		x: 0,
 		y: 0

@@ -1,4 +1,5 @@
 import type { Config } from './config.js';
+import { maps } from './maps.js';
 
 interface LaunchCommand {
 	path: string;
@@ -12,6 +13,11 @@ export function createLaunchCommand (config: Config): LaunchCommand {
 	};
 
 	const windowed = config.windowed || !config.fullscreen;
+
+	// Map.
+	if (config.map && maps.includes(config.map)) {
+		command.args.push(config.map);
+	}
 
 	// Splash.
 	if (!config.showSplash) {

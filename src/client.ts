@@ -1,6 +1,7 @@
 import { spawn, type ChildProcess } from 'node:child_process';
 import { Config, Defaults } from './config.js';
 import { createLaunchCommand } from './command.js';
+import type { maps } from './maps.js';
 
 type GameClientEvent = 'crash' | 'start' | 'stop';
 type GameClientEventListener = () => (void | Promise<void>);
@@ -48,6 +49,15 @@ export class GameClient {
 	 */
 	public fullscreen (fullscreen = Defaults.fullscreen): GameClient {
 		this.#config.fullscreen = fullscreen;
+		return this;
+	}
+
+	/**
+	 * Launch directly into a particular map.
+	 * @param map The full name of the map (eg, `'TrCTF-Katabatic'`).
+	 */
+	public map (map: (typeof maps)[number]): GameClient {
+		this.#config.map = map;
 		return this;
 	}
 
