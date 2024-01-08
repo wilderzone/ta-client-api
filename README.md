@@ -43,4 +43,5 @@ client.on('start', () => {
 | Event   | Description                                                                     |
 | :------ | :------------------------------------------------------------------------------ |
 | `start` | Emitted when the game client has started up and is ready to be interacted with. |
-| `stop`  | Emitted when the game client has stopped running (either intentionally, or from a crash) and is no longer accessible. |
+| `stop`  | Emitted when the game client has stopped running (intentionally) and is no longer accessible. |
+| `crash` | Emitted when the game client has stopped running (from a crash) and is no longer accessible. |

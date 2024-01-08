@@ -2,7 +2,7 @@ import { spawn, type ChildProcess } from 'node:child_process';
 import { Config, Defaults } from './config.js';
 import { createLaunchCommand } from './command.js';
 
-type GameClientEvent = 'start' | 'stop';
+type GameClientEvent = 'crash' | 'start' | 'stop';
 type GameClientEventListener = () => (void | Promise<void>);
 
 export class GameClient {
@@ -10,9 +10,11 @@ export class GameClient {
 	#client?: ChildProcess;
 	#debug = false;
 	#listeners: Record<GameClientEvent, Array<GameClientEventListener>> = {
+		crash: [],
 		start: [],
 		stop: []
 	};
+	#running = false;
 
 	constructor (config?: Config)
 	constructor (path?: string)
@@ -112,6 +114,7 @@ export class GameClient {
 		console.info('Starting game client...');
 		const { path, args } = createLaunchCommand(this.#config);
 		this.#client = spawn(path, args);
+		this.#running = true;
 		// Watch the stdout stream for the "ready" message.
 		this.#client.stdout?.on('data', (data: Buffer) => {
 			const line = data.toString();
@@ -127,7 +130,14 @@ export class GameClient {
 		// Listen for the client's exit event.
 		this.#client.on('exit', () => {
 			this.#client = undefined;
-			console.info('\x1b[31m•\x1b[0m Stopped');
+			if (this.#running) {
+				console.warn('\x1b[31m!\x1b[0m Crashed');
+				for (const callback of this.#listeners.crash) callback();
+			} else {
+				console.info('\x1b[31m•\x1b[0m Stopped');
+				for (const callback of this.#listeners.stop) callback();
+			}
+			this.#running = false;
 		});
 	}
 
@@ -140,6 +150,7 @@ export class GameClient {
 			return;
 		}
 		console.info('Stopping game client...');
+		this.#running = false;
 		this.#client.kill();
 	}
 }
