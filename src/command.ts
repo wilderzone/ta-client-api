@@ -11,7 +11,7 @@ export function createLaunchCommand (config: Config): LaunchCommand {
 		args: new Array<string>()
 	};
 
-	const windowed = config.windowed || !config.fullscreen
+	const windowed = config.windowed || !config.fullscreen;
 
 	// Splash.
 	if (!config.showSplash) {
