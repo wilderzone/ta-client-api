@@ -1,5 +1,7 @@
 # TA Client API
 
+[![npm version](https://badge.fury.io/js/ta-client-api.svg)](https://www.npmjs.com/package/ta-client-api)
+
 Control TA programmatically with JavaScript.
 
 ```sh
