@@ -59,3 +59,8 @@ client.on('start', () => {
 | `start` | Emitted when the game client has started up and is ready to be interacted with. |
 | `stop`  | Emitted when the game client has stopped running (intentionally) and is no longer accessible. |
 | `crash` | Emitted when the game client has stopped running (from a crash) and is no longer accessible. |
+
+
+## References
+
+- [UE3 commandline parameters](https://docs.unrealengine.com/udk/Three/CommandLineArguments.html)
