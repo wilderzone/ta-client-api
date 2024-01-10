@@ -15,9 +15,20 @@ export function createLaunchCommand (config: Config): LaunchCommand {
 
 	const windowed = config.windowed || !config.fullscreen;
 
+	// Server.
+	if (config.server) {
+		command.args.push('server');
+	}
+
 	// Map.
+	// Must be the first argument (or first after 'server').
 	if (config.map && maps.includes(config.map)) {
 		command.args.push(config.map);
+	}
+
+	// Server port.
+	if (config.server) {
+		command.args.push(`-port=${config.serverPort}`);
 	}
 
 	// Logs.

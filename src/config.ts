@@ -18,6 +18,8 @@ export class Config {
 		x: 1920,
 		y: 1080
 	};
+	server = false;
+	serverPort = 7777;
 	showSplash = true;
 	windowed = false;
 

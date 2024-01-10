@@ -95,6 +95,16 @@ export class GameClient {
 	}
 
 	/**
+	 * Start the game as a server.
+	 * @param port The port to open the server on *(defaults to `7777`)*.
+	 */
+	public server (port = Defaults.serverPort): GameClient {
+		this.#config.server = true;
+		this.#config.serverPort = port;
+		return this;
+	}
+
+	/**
 	 * Set the visibility of the splash screen.
 	 * @param show Set `true` *(default)* to show the splash, `false` to hide it.
 	 */
@@ -133,7 +143,8 @@ export class GameClient {
 		// Start the client.
 		console.info('Starting game client...');
 		const { path, args } = createLaunchCommand(this.#config);
-		this.#client = spawn(path, args);
+		const cwd = path.split('/').slice(0, -1).join('/');
+		this.#client = spawn(path, args, { argv0: '', cwd, windowsVerbatimArguments: true });
 		this.#running = true;
 		// Watch the stdout stream for the "ready" message.
 		this.#client.stdout?.on('data', (data: Buffer) => {

@@ -41,6 +41,7 @@ All available settings:
 | `map`        | `map-name`         | *None*             | Launch directly into a particular map.                |
 | `position`   | `number`, `number` | `0`, `0`           | The position of the game window on the screen. This only takes effect in windowed mode. |
 | `resolution` | `number`, `number` | *None*             | The resolution of the game window.                    |
+| `server`     | `port-number`      | `7777`             | Start the game as a server.                           |
 | `splash`     | `true \| false`    | `true`             | Show the splash screen.                               |
 | `windowed`   | `true \| false`    | `false`            | Enable windowed mode.                                 |
 
