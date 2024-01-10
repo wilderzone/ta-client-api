@@ -1,4 +1,4 @@
-# TA Client API
+# <img src="./logo.svg" style="width: 3em;"> TA Client API
 
 [![npm version](https://badge.fury.io/js/ta-client-api.svg)](https://www.npmjs.com/package/ta-client-api)
 
