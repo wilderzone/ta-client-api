@@ -1,3 +1,4 @@
+import { join } from 'node:path/posix';
 import type { Config } from './config.js';
 import { maps } from './maps.js';
 
@@ -17,6 +18,13 @@ export function createLaunchCommand (config: Config): LaunchCommand {
 	// Map.
 	if (config.map && maps.includes(config.map)) {
 		command.args.push(config.map);
+	}
+
+	// Logs.
+	if (config.logPath) {
+		const time = new Date().toISOString().split(':').join('-');
+		const logPath = join(config.logPath, `${time}.log`).split('\\').join('/');
+		command.args.push(`-abslog="${logPath}"`);
 	}
 
 	// Splash.

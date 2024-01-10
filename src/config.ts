@@ -1,3 +1,4 @@
+import { join } from 'node:path/posix';
 import type { maps } from './maps.js';
 
 /**
@@ -5,6 +6,7 @@ import type { maps } from './maps.js';
  */
 export class Config {
 	fullscreen = true;
+	logPath = join(process.cwd(), 'logs');
 	map?: (typeof maps)[number];
 	position = {
 		x: 0,

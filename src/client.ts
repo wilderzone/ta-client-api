@@ -53,6 +53,15 @@ export class GameClient {
 	}
 
 	/**
+	 * Output log files to a specific directory.
+	 * @param logPath The directory the client should output log files to. *(defaults to `{cwd}/logs`)*.
+	 */
+	public logs (logPath = Defaults.logPath): GameClient {
+		this.#config.logPath = logPath;
+		return this;
+	}
+
+	/**
 	 * Launch directly into a particular map.
 	 * @param map The full name of the map (eg, `'TrCTF-Katabatic'`).
 	 */

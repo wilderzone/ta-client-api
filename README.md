@@ -33,15 +33,16 @@ client
 ```
 
 All available settings:
-| Setting      | Options            | Description                            |
-| :----------- | :----------------- | :------------------------------------- |
-| `debug`      | `true \| false`    | Enable debugging output.               |
-| `fullscreen` | `true \| false`    | Enable fullscreen mode.                |
-| `map`        | `map-name`         | Launch directly into a particular map. |
+| Setting      | Options            | Description                                           |
+| :----------- | :----------------- | :---------------------------------------------------- |
+| `debug`      | `true \| false`    | Enable debugging output.                              |
+| `fullscreen` | `true \| false`    | Enable fullscreen mode.                               |
+| `logs`       | `path`             | Output log files to a specific directory.             |
+| `map`        | `map-name`         | Launch directly into a particular map.                |
 | `position`   | `number`, `number` | The position of the game window on the screen. This only takes effect in windowed mode. |
-| `resolution` | `number`, `number` | The resolution of the game window.     |
-| `splash`     | `true \| false`    | Show the splash screen.                |
-| `windowed`   | `true \| false`    | Enable windowed mode.                  |
+| `resolution` | `number`, `number` | The resolution of the game window.                    |
+| `splash`     | `true \| false`    | Show the splash screen.                               |
+| `windowed`   | `true \| false`    | Enable windowed mode.                                 |
 
 
 ### Events
