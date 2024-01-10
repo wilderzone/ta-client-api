@@ -27,9 +27,9 @@ Each method is optional and can be used in any order. For example, to launch the
 
 ```js
 client
-	.windowed(true)           // Enable windowed mode.
-	.resolution(700, 450)     // Set the resolution.
-	.start();                 // Launch the game.
+    .windowed(true)           // Enable windowed mode.
+    .resolution(700, 450)     // Set the resolution.
+    .start();                 // Launch the game.
 ```
 
 All available settings:
@@ -51,7 +51,7 @@ You can register callback functions to listen for certain events emitted by the 
 For example, to log a message when the client starts:
 ```js
 client.on('start', () => {
-	console.log('Woohoo!');
+    console.log('Woohoo!');
 });
 ```
 
