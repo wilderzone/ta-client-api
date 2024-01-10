@@ -21,10 +21,12 @@ export function createLaunchCommand (config: Config): LaunchCommand {
 	}
 
 	// Logs.
-	if (config.logPath) {
+	if (config.log && config.logPath) {
 		const time = new Date().toISOString().split(':').join('-');
 		const logPath = join(config.logPath, `${time}.log`).split('\\').join('/');
 		command.args.push(`-abslog="${logPath}"`);
+	} else {
+		command.args.push('-nowrite');
 	}
 
 	// Splash.

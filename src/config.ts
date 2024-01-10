@@ -6,6 +6,7 @@ import type { maps } from './maps.js';
  */
 export class Config {
 	fullscreen = true;
+	log = false;
 	logPath = join(process.cwd(), 'logs');
 	map?: (typeof maps)[number];
 	position = {

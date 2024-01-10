@@ -37,7 +37,7 @@ All available settings:
 | :----------- | :----------------- | :----------------- | :---------------------------------------------------- |
 | `debug`      | `true \| false`    | `false`            | Enable debugging output.                              |
 | `fullscreen` | `true \| false`    | `true`             | Enable fullscreen mode.                               |
-| `logs`       | `path`             | `{cwd}/logs`       | Output log files to a specific directory.             |
+| `log`        | `path`             | `{cwd}/logs`       | Output log files.                                     |
 | `map`        | `map-name`         | *None*             | Launch directly into a particular map.                |
 | `position`   | `number`, `number` | `0`, `0`           | The position of the game window on the screen. This only takes effect in windowed mode. |
 | `resolution` | `number`, `number` | *None*             | The resolution of the game window.                    |

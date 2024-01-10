@@ -53,11 +53,12 @@ export class GameClient {
 	}
 
 	/**
-	 * Output log files to a specific directory.
-	 * @param logPath The directory the client should output log files to. *(defaults to `{cwd}/logs`)*.
+	 * Output log files.
+	 * @param path The directory the client should output log files to. *(defaults to `{cwd}/logs`)*.
 	 */
-	public logs (logPath = Defaults.logPath): GameClient {
-		this.#config.logPath = logPath;
+	public log (path = Defaults.logPath): GameClient {
+		this.#config.log = true;
+		this.#config.logPath = path;
 		return this;
 	}
 
