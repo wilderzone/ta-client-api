@@ -137,7 +137,7 @@ export class GameClient {
 		// Watch the stdout stream for the "ready" message.
 		this.#client.stdout?.on('data', (data: Buffer) => {
 			const line = data.toString();
-			if (this.#debug) console.info('\x1b[2m>\x1b[0m', line);
+			if (this.#debug) process.stdout.write(`\x1b[2m>\x1b[0m ${line}`);
 			if (
 				line.includes('Warning, Failed to compile Material dev_efx_elechold.MAT_EFX_DEV_SubUV_bolts')
 				|| line.includes('Warning, Failed to load \'Font None.ITC Franklin Gothic Std Med\'')
