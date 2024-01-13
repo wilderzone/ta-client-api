@@ -158,6 +158,11 @@ export class GameClient {
 		console.info('Starting game client...');
 		const { path, args } = createLaunchCommand(this.#config);
 		const cwd = path.split('/').slice(0, -1).join('/');
+		if (this.#debug) {
+			console.info('Path:', path);
+			console.info('CWD:', cwd);
+			console.info('Arguments:', args);
+		}
 		this.#client = spawn(path, args, { argv0: '', cwd, windowsVerbatimArguments: true });
 		this.#running = true;
 		// Watch the stdout stream for the "ready" message.
