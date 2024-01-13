@@ -1,5 +1,6 @@
 import { join } from 'node:path/posix';
 import type { maps } from './maps.js';
+import { Team } from './teams.js';
 
 /**
  * Game client configuration.
@@ -21,6 +22,7 @@ export class Config {
 	server = false;
 	serverPort = 7777;
 	showSplash = true;
+	team = Team.Spectator;
 	windowed = false;
 
 	constructor (path = 'TribesAscend.exe') {

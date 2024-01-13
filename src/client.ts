@@ -2,6 +2,7 @@ import { spawn, type ChildProcess } from 'node:child_process';
 import { Config, Defaults } from './config.js';
 import { createLaunchCommand } from './command.js';
 import type { maps } from './maps.js';
+import { Team } from './teams.js';
 
 type GameClientEvent = 'crash' | 'start' | 'stop';
 type GameClientEventListener = () => (void | Promise<void>);
@@ -110,6 +111,19 @@ export class GameClient {
 	 */
 	public splash (show = Defaults.showSplash): GameClient {
 		this.#config.showSplash = show;
+		return this;
+	}
+
+	/**
+	 * Set the team to join.
+	 * @param team The team to join.
+	 * - `0` = None
+	 * - `1` = Diamond Sword
+	 * - `2` = Blood Eagle
+	 * - `255` = Spectator
+	 */
+	public team (team: Team): GameClient {
+		this.#config.team = team;
 		return this;
 	}
 

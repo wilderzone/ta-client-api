@@ -23,7 +23,11 @@ export function createLaunchCommand (config: Config): LaunchCommand {
 	// Map.
 	// Must be the first argument (or first after 'server').
 	if (config.map && maps.includes(config.map)) {
-		command.args.push(config.map);
+		let map = config.map;
+		if (!config.server && typeof config.team === 'number' && !isNaN(config.team)) {
+			map += `?TEAM=${config.team}`;
+		}
+		command.args.push(map);
 	}
 
 	// Server port.
