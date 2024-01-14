@@ -23,14 +23,24 @@ const client = new GameClient(path);
 ### Configuration
 
 The easiest way to configure the client is through the chainable settings methods.
-Each method is optional and can be used in any order. For example, to launch the game in a 700px ⨯ 450px window: 
+Each method is optional and can be used in any order. For example, to launch the game in a 700px ⨯ 450px window:
 
 ```js
 client
     .windowed(true)           // Enable windowed mode.
     .resolution(700, 450)     // Set the resolution.
-    .team(Team.DiamondSword)  // Join the Diamond Sword team.
     .start();                 // Launch the game.
+```
+
+Or to connect directly to a game server:
+
+```js
+import { Team } from 'ta-client-api';
+
+client
+    .connect('example.wilderzone.live', 7777)  // Specify the server address and port to connect to.
+    .team(Team.DiamondSword)                   // Join the Diamond Sword team.
+    .start();                                  // Launch the game.
 ```
 
 All available settings:
