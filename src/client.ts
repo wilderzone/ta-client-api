@@ -47,6 +47,17 @@ export class GameClient {
 	}
 
 	/**
+	 * Pass a custom argument to the game client.
+	 * This can be called more than once to pass multiple arguments.
+	 * @param argument The argument to pass.
+	 * @returns 
+	 */
+	public custom (argument: string): GameClient {
+		this.#config.custom.push(argument);
+		return this;
+	}
+
+	/**
 	 * Enable debugging output.
 	 * @param enable Set `true` *(default)* to enable debug output, `false` to disable.
 	 */

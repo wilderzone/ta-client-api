@@ -6,6 +6,7 @@ import { Team } from './teams.js';
  * Game client configuration.
  */
 export class Config {
+	custom = new Array<string>();
 	fullscreen = true;
 	log = false;
 	logPath = join(process.cwd(), 'logs');

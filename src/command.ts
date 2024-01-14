@@ -72,5 +72,11 @@ export function createLaunchCommand (config: Config): LaunchCommand {
 		command.args.push(`-resy=${config.resolution.y}`);
 	}
 
+	// Custom arguments.
+	for (const arg of config.custom) {
+		if (typeof arg !== 'string') continue;
+		command.args.push(arg);
+	}
+
 	return command;
 }

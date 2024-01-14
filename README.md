@@ -46,6 +46,7 @@ client
 All available settings:
 | Setting      | Options              | Default            | Works with <br> (🕹️ game mode \| 🗄️ server mode) | Description                                           |
 | :----------- | :------------------- | :----------------- | :---------- | :---------------------------------------------------- |
+| `custom`     | `argument`           | *None*             | 🕹️🗄️        | Pass a custom argument to the game client.            |
 | `connect`    | `address`, `port-number` | *None*, `7777` | 🕹️          | Connect to a game server.                             |
 | `debug`      | `true \| false`      | `false`            | 🕹️🗄️        | Enable debugging output.                              |
 | `fullscreen` | `true \| false`      | `true`             | 🕹️          | Enable fullscreen mode.                               |
