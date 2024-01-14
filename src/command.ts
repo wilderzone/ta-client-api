@@ -16,22 +16,22 @@ export function createLaunchCommand (config: Config): LaunchCommand {
 	const windowed = config.windowed || !config.fullscreen;
 
 	// Server.
-	if (config.server) {
+	if (config.server && !config.remoteAddress) {
 		command.args.push('server');
 	}
 
-	// Map.
+	// Map / Remote server.
 	// Must be the first argument (or first after 'server').
-	if (config.map && maps.includes(config.map)) {
-		let map = config.map;
+	if ((config.map && maps.includes(config.map)) || config.remoteAddress) {
+		let destination = config.map || `${config.remoteAddress}:${config.remotePort}`;
 		if (!config.server && typeof config.team === 'number' && !isNaN(config.team)) {
-			map += `?TEAM=${config.team}`;
+			destination += `?TEAM=${config.team}`;
 		}
-		command.args.push(map);
+		command.args.push(destination);
 	}
 
 	// Server port.
-	if (config.server) {
+	if (config.server && !config.remoteAddress) {
 		command.args.push(`-port=${config.serverPort}`);
 	}
 

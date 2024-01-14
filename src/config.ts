@@ -15,6 +15,8 @@ export class Config {
 		y: 0
 	};
 	path: string;
+	remoteAddress?: string;
+	remotePort = 7777;
 	resolution = {
 		x: 1920,
 		y: 1080

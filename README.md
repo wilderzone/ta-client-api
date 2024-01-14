@@ -36,6 +36,7 @@ client
 All available settings:
 | Setting      | Options              | Default            | Description                                           |
 | :----------- | :------------------- | :----------------- | :---------------------------------------------------- |
+| `connect`    | `address`, `port-number` | *None*, `7777` | Connect to a game server.                             |
 | `debug`      | `true \| false`      | `false`            | Enable debugging output.                              |
 | `fullscreen` | `true \| false`      | `true`             | Enable fullscreen mode.                               |
 | `log`        | `path`               | `{cwd}/logs`       | Output log files.                                     |

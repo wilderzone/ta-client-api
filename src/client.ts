@@ -36,6 +36,17 @@ export class GameClient {
 	}
 
 	/**
+	 * Connect to a game server.
+	 * @param address The address of the server to connect to.
+	 * @param port The port of the server.
+	 */
+	public connect (address: string, port = Defaults.remotePort): GameClient {
+		this.#config.remoteAddress = address;
+		this.#config.remotePort = port;
+		return this;
+	}
+
+	/**
 	 * Enable debugging output.
 	 * @param enable Set `true` *(default)* to enable debug output, `false` to disable.
 	 */
