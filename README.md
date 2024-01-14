@@ -44,19 +44,19 @@ client
 ```
 
 All available settings:
-| Setting      | Options              | Default            | Works with (🕹️ game mode \| 🗄️ server mode) | Description                                           |
+| Setting      | Options              | Default            | Works with <br> (🕹️ game mode \| 🗄️ server mode) | Description                                           |
 | :----------- | :------------------- | :----------------- | :---------- | :---------------------------------------------------- |
-| `connect`    | `address`, `port-number` | *None*, `7777` | 🕹️     | Connect to a game server.                             |
-| `debug`      | `true \| false`      | `false`            | 🕹️🗄️    | Enable debugging output.                              |
-| `fullscreen` | `true \| false`      | `true`             | 🕹️     | Enable fullscreen mode.                               |
-| `log`        | `path`               | `{cwd}/logs`       | 🕹️🗄️    | Output log files.                                     |
-| `map`        | `map-name`           | *None*             | 🕹️🗄️    | Launch directly into a particular map.                |
-| `position`   | `number`, `number`   | `0`, `0`           | 🕹️     | The position of the game window on the screen. This only takes effect in windowed mode. |
-| `resolution` | `number`, `number`   | *None*             | 🕹️     | The resolution of the game window.                    |
-| `server`     | `port-number`        | `7777`             | 🗄️     | Start the game as a server.                           |
-| `splash`     | `true \| false`      | `true`             | 🕹️     | Show the splash screen.                               |
-| `team`       | `0 \| 1 \| 2 \| 255` | `255`              | 🕹️     | The team to join.                                     |
-| `windowed`   | `true \| false`      | `false`            | 🕹️     | Enable windowed mode.                                 |
+| `connect`    | `address`, `port-number` | *None*, `7777` | 🕹️          | Connect to a game server.                             |
+| `debug`      | `true \| false`      | `false`            | 🕹️🗄️        | Enable debugging output.                              |
+| `fullscreen` | `true \| false`      | `true`             | 🕹️          | Enable fullscreen mode.                               |
+| `log`        | `path`               | `{cwd}/logs`       | 🕹️🗄️        | Output log files.                                     |
+| `map`        | `map-name`           | *None*             | 🕹️🗄️        | Launch directly into a particular map.                |
+| `position`   | `number`, `number`   | `0`, `0`           | 🕹️          | The position of the game window on the screen. This only takes effect in windowed mode. |
+| `resolution` | `number`, `number`   | *None*             | 🕹️          | The resolution of the game window.                    |
+| `server`     | `port-number`        | `7777`             | 🗄️          | Start the game as a server.                           |
+| `splash`     | `true \| false`      | `true`             | 🕹️          | Show the splash screen.                               |
+| `team`       | `0 \| 1 \| 2 \| 255` | `255`              | 🕹️          | The team to join.                                     |
+| `windowed`   | `true \| false`      | `false`            | 🕹️          | Enable windowed mode.                                 |
 
 
 ### Events
