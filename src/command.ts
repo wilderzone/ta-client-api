@@ -35,6 +35,11 @@ export function createLaunchCommand (config: Config): LaunchCommand {
 		command.args.push(`-port=${config.serverPort}`);
 	}
 
+	// Login server.
+	if (config.host) {
+		command.args.push(`-hostx=${config.host}`);
+	}
+
 	// Logs.
 	if (config.log && config.logPath) {
 		const time = new Date().toISOString().split(':').join('-');

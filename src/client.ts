@@ -76,6 +76,15 @@ export class GameClient {
 	}
 
 	/**
+	 * Use a specific host login server.
+	 * @param address The address of the login server.
+	 */
+	public host (address: string): GameClient {
+		this.#config.host = address;
+		return this;
+	}
+
+	/**
 	 * Output log files.
 	 * @param path The directory the client should output log files to. *(defaults to `{cwd}/logs`)*.
 	 */

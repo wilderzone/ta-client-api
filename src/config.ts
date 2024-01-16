@@ -8,6 +8,7 @@ import { Team } from './teams.js';
 export class Config {
 	custom = new Array<string>();
 	fullscreen = true;
+	host?: string;
 	log = false;
 	logPath = join(process.cwd(), 'logs');
 	map?: (typeof maps)[number];
