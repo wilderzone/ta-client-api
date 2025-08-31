@@ -2,6 +2,7 @@ import { spawn, type ChildProcess } from 'node:child_process';
 import { Config, Defaults } from './config.js';
 import { createLaunchCommand } from './command.js';
 import type { maps } from './maps.js';
+import { strings } from './strings.js';
 import { Team } from './teams.js';
 
 type GameClientEvent = 'crash' | 'start' | 'stop';
@@ -201,8 +202,8 @@ export class GameClient {
 			const line = data.toString();
 			if (this.#debug) process.stdout.write(`\x1b[2m>\x1b[0m ${line}`);
 			if (
-				line.includes('Warning, Failed to compile Material dev_efx_elechold.MAT_EFX_DEV_SubUV_bolts')
-				|| line.includes('Warning, Failed to load \'Font None.ITC Franklin Gothic Std Med\'')
+				line.includes(strings.materialCompilationWarning)
+				|| line.includes(strings.fontLoadWarning)
 			) {
 				console.info('\x1b[32m•\x1b[0m Started');
 				for (const callback of this.#listeners.start) callback();
