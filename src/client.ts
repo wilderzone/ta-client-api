@@ -1,4 +1,4 @@
-import { spawn, type ChildProcess } from 'node:child_process';
+import type { ChildProcess, RuntimeAdapter } from './adapter.js';
 import { Config, Defaults } from './config.js';
 import { createLaunchCommand } from './command.js';
 import type { InternalMapName } from './maps.js';
@@ -18,10 +18,12 @@ export class GameClient {
 		stop: []
 	};
 	#running = false;
+	#runtime: RuntimeAdapter;
 
-	constructor (config?: Config)
-	constructor (path?: string)
-	constructor (config?: string | Config) {
+	constructor (runtime: RuntimeAdapter, config?: Config)
+	constructor (runtime: RuntimeAdapter, path?: string)
+	constructor (runtime: RuntimeAdapter, config?: string | Config) {
+		this.#runtime = runtime;
 		if (config instanceof Config) {
 			this.#config = config;
 			return;
@@ -198,8 +200,8 @@ export class GameClient {
 			console.info('The game client is already running.');
 			return;
 		}
-		// Start the client.
-		console.info('Starting game client...');
+		// Create the client.
+		console.info('Creating game client...');
 		const { path, args } = createLaunchCommand(this.#config);
 		const cwd = path.split('/').slice(0, -1).join('/');
 		if (this.#debug) {
@@ -207,15 +209,14 @@ export class GameClient {
 			console.info('CWD:', cwd);
 			console.info('Arguments:', args);
 		}
-		this.#client = spawn(path, args, { argv0: '', cwd, windowsVerbatimArguments: true });
+		this.#client = this.#runtime.process.spawn(path, args);
 		this.#running = true;
 		// Watch the stdout stream for the "ready" message.
-		this.#client.stdout?.on('data', (data: Buffer) => {
-			const line = data.toString();
-			if (this.#debug) process.stdout.write(`\x1b[2m>\x1b[0m ${line}`);
+		this.#client.on('data', (data) => {
+			if (this.#debug) process.stdout.write(`\x1b[2m>\x1b[0m ${data}`);
 			if (
-				line.includes(strings.materialCompilationWarning)
-				|| line.includes(strings.fontLoadWarning)
+				data.includes(strings.materialCompilationWarning)
+				|| data.includes(strings.fontLoadWarning)
 			) {
 				console.info('\x1b[32m•\x1b[0m Started');
 				for (const callback of this.#listeners.start) callback();
@@ -233,18 +234,21 @@ export class GameClient {
 			}
 			this.#running = false;
 		});
+		// Start the client.
+		console.info('Starting game client...');
+		void this.#client.start();
 	}
 
 	/**
 	 * Stop the game client.
 	 */
 	public stop (): void {
-		if (!this.#client || this.#client.killed) {
+		if (!this.#client || !this.#client.connected) {
 			console.info('The game client is not running.');
 			return;
 		}
 		console.info('Stopping game client...');
 		this.#running = false;
-		this.#client.kill();
+		void this.#client.stop();
 	}
 }
