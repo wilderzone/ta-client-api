@@ -14,6 +14,7 @@ export interface ChildProcess {
 
 export interface RuntimeAdapter {
 	process: {
+		/** Create a new child process. */
 		spawn: (command: string, args?: string[]) => ChildProcess;
 	}
 }
