@@ -1,23 +1,39 @@
-# <img src="./logo.svg" style="width: 3em;"> TA Client API
+# <img src="./logo.svg" style="width: 3em;"> TA Client API (Polymorphic)
 
 [![npm version](https://badge.fury.io/js/ta-client-api.svg)](https://www.npmjs.com/package/ta-client-api)
 
 Control TA programmatically with JavaScript.
 
 ```sh
-npm install ta-client-api
+npm install github:wilderzone/ta-client-api#polymorphic
 ```
+_You may need to escape the `#`._
+
 
 ## Usage
 
-```js
-import { GameClient } from 'ta-client-api';
+Since this version of the TA Client API is polymorphic, you'll need to provide an adapter for your specific JS runtime.
+```ts
+import type { RuntimeAdapter } from 'ta-client-api-polymorphic';
+
+const runtime: RuntimeAdapter = {
+    process: {
+        spawn: () => {
+            // Your implementation...
+        }
+    }
+};
+```
+
+Then you can create a the game client instance:
+```ts
+import { GameClient } from 'ta-client-api-polymorphic';
 
 // The path to your TA executable (can be relative or absolute).
 const path = 'C:/path/to/TribesAscend.exe';
 
 // Create a new game client instance.
-const client = new GameClient(path);
+const client = new GameClient(runtime, path);
 ```
 
 ### Configuration
@@ -25,7 +41,7 @@ const client = new GameClient(path);
 The easiest way to configure the client is through the chainable settings methods.
 Each method is optional and can be used in any order. For example, to launch the game in a 700px ⨯ 450px window:
 
-```js
+```ts
 client
     .windowed(true)           // Enable windowed mode.
     .resolution(700, 450)     // Set the resolution.
@@ -34,8 +50,8 @@ client
 
 Or to connect directly to a game server:
 
-```js
-import { Team } from 'ta-client-api';
+```ts
+import { Team } from 'ta-client-api-polymorphic';
 
 client
     .connect('example.wilderzone.live', 7777)  // Specify the server address and port to connect to.
@@ -65,7 +81,7 @@ All available settings:
 
 You can register callback functions to listen for certain events emitted by the game client.  
 For example, to log a message when the client starts:
-```js
+```ts
 function callback() {
     console.log('Woohoo!');
 }
@@ -74,7 +90,7 @@ client.on('start', callback);
 ```
 
 Event listeners can be removed with `off`. When doing so, make sure to pass the same callback reference:
-```js
+```ts
 client.off('start', callback);
 ```
 
