@@ -1,5 +1,5 @@
 {
-	"name": "ta-client-api",
+	"name": "ta-client-api-polymorphic",
 	"version": "0.4.0",
 	"description": "Control TA programmatically with JavaScript.",
 	"main": "dist/index.js",
@@ -20,7 +20,8 @@
 		"game-server",
 		"typescript",
 		"ts",
-		"node"
+		"node",
+		"polymorphic"
 	],
 	"author": {
 		"name": "Giga",
