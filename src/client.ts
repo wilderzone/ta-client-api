@@ -199,6 +199,7 @@ export class GameClient {
 			console.info('The game client is already running.');
 			return;
 		}
+
 		// Create the client.
 		console.info('Creating game client...');
 		const { path, args } = createLaunchCommand(this.#config);
@@ -210,6 +211,7 @@ export class GameClient {
 		}
 		this.#client = this.#runtime.process.spawn(path, args);
 		this.#running = true;
+
 		// Watch the stdout stream for the "ready" message.
 		this.#client.on('data', (data) => {
 			if (this.#debug) process.stdout.write(`\x1b[2m>\x1b[0m ${data}`);
@@ -221,6 +223,7 @@ export class GameClient {
 				for (const callback of this.#listeners.start) callback();
 			}
 		});
+
 		// Listen for the client's exit event.
 		this.#client.on('exit', () => {
 			this.#client = undefined;
@@ -233,6 +236,7 @@ export class GameClient {
 			}
 			this.#running = false;
 		});
+
 		// Start the client.
 		console.info('Starting game client...');
 		void this.#client.start();
