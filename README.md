@@ -51,7 +51,7 @@ All available settings:
 | `debug`      | `true \| false`      | `false`            | 🕹️🗄️        | Enable debugging output.                              |
 | `fullscreen` | `true \| false`      | `true`             | 🕹️          | Enable fullscreen mode.                               |
 | `host`       | `address`            | *None*             | 🕹️🗄️        | Use a specific host login server.                     |
-| `log`        | `path`               | `{cwd}/logs`       | 🕹️🗄️        | Output log files.                                     |
+| `log`        | `path`               | *None*             | 🕹️🗄️        | Output log files.                                     |
 | `map`        | `map-name`           | *None*             | 🕹️🗄️        | Launch directly into a particular map.                |
 | `position`   | `number`, `number`   | `0`, `0`           | 🕹️          | The position of the game window on the screen. This only takes effect in windowed mode. |
 | `resolution` | `number`, `number`   | *None*             | 🕹️          | The resolution of the game window.                    |

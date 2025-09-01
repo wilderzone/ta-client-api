@@ -1,10 +1,18 @@
-import { join } from 'node:path/posix';
 import type { Config } from './config.js';
 import { maps } from './maps.js';
 
 interface LaunchCommand {
 	path: string;
 	args: Array<string>;
+}
+
+/** Join multiple path segments together. */
+function join(...segments: Array<string>): string {
+	return segments
+		.map(String)
+		.join('/')
+		.replace(/\\/g, '/')
+		.replace(/\/+/g, '/');
 }
 
 export function createLaunchCommand (config: Config): LaunchCommand {
