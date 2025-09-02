@@ -215,7 +215,7 @@ export class GameClient {
 
 		// Watch the stdout stream for the "ready" message.
 		this.#client.on('data', (data) => {
-			if (this.#debug) process.stdout.write(`\x1b[2m>\x1b[0m ${data}`);
+			if (this.#debug) console.info(`\x1b[2m>\x1b[0m ${data}`);
 			if (
 				data.includes(strings.materialCompilationWarning)
 				|| data.includes(strings.fontLoadWarning)
