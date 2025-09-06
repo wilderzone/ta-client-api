@@ -38,6 +38,11 @@ export class GameClient {
 		return this.#config.path;
 	}
 
+	/** The PID of the game process. */
+	public get pid (): number | undefined {
+		return this.#client?.pid;
+	}
+
 	/**
 	 * Connect to a game server.
 	 * @param address The address of the server to connect to.

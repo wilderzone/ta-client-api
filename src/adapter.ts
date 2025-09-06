@@ -4,6 +4,8 @@ type ChildProcessEvent = 'data' | 'exit';
 export interface ChildProcess {
 	/** Indicates whether it is still possible to send/receive messages to/from the child process. */
 	connected: boolean;
+	/** The PID of the child process. */
+	pid: number | undefined;
 	/** Listen to events emitted by the child process. */
 	on: ChildProcessEventHandler<ChildProcessEvent, string>;
 	/** Start the child process. */
