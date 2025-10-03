@@ -66,9 +66,16 @@ All available settings:
 You can register callback functions to listen for certain events emitted by the game client.  
 For example, to log a message when the client starts:
 ```js
-client.on('start', () => {
+function callback() {
     console.log('Woohoo!');
-});
+}
+
+client.on('start', callback);
+```
+
+Event listeners can be removed with `off`. When doing so, make sure to pass the same callback reference:
+```js
+client.off('start', callback);
 ```
 
 | Event   | Description                                                                     |

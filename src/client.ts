@@ -179,6 +179,17 @@ export class GameClient {
 	}
 
 	/**
+	 * Unregister an existing callback function from a particular game client event.
+	 * @param event The event.
+	 * @param callback The function to unregister.
+	 */
+	public off (event: GameClientEvent, callback: GameClientEventListener): GameClient {
+		const index = this.#listeners[event].indexOf(callback);
+		if (index >= 0) this.#listeners[event].splice(index, 1);
+		return this;
+	}
+
+	/**
 	 * Start the game client.
 	 */
 	public start (): void {
