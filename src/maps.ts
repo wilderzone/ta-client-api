@@ -62,5 +62,8 @@ export const maps = [
 	'TrCaH-Raindance',
 	'TrCaH-SulfurCove',
 	'TrCaH-Tartarus',
-	'TrCaH-CanyonCrusadeRevival'
+	'TrCaH-CanyonCrusadeRevival',
+	'TrTraining-Crossfire',
+	'TrTraining-SkiTutorial',
+	'TrTraining-TutorialAdv'
 ] as const;
