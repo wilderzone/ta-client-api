@@ -1,7 +1,7 @@
 import { spawn, type ChildProcess } from 'node:child_process';
 import { Config, Defaults } from './config.js';
 import { createLaunchCommand } from './command.js';
-import type { maps } from './maps.js';
+import type { InternalMapName } from './maps.js';
 import { strings } from './strings.js';
 import { Team } from './teams.js';
 
@@ -97,9 +97,10 @@ export class GameClient {
 
 	/**
 	 * Launch directly into a particular map.
-	 * @param map The full name of the map (eg, `'TrCTF-Katabatic'`).
+	 * @param map The full internal name of the map (eg, `'TrCTF-Katabatic'`).
+	 * @note The game client will fallback to the default map (main menu) if the provided map doesn't exist.
 	 */
-	public map (map: (typeof maps)[number]): GameClient {
+	public map (map: InternalMapName): GameClient {
 		this.#config.map = map;
 		return this;
 	}

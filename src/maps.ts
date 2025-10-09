@@ -1,69 +1,82 @@
-export const maps = [
-	'TrCTF-Katabatic',
-	'TrCTF-ArxNovena',
-	'TrCTF-DangerousCrossing',
-	'TrCTF-Crossfire',
-	'TrCTF-Drydock',
-	'TrCTF-Terminus',
-	'TrCTF-Sunstar',
-	'TrCTF-BellaOmega',
-	'TrCTF-BellaOmegaNS',
-	'TrCTF-Blueshift',
-	'TrCTF-CanyonCrusade',
-	'TrCTF-Hellfire',
-	'TrCTF-IceCoaster',
-	'TrCTF-Perdition',
-	'TrCTF-Permafrost',
-	'TrCTF-Raindance',
-	'TrCTF-Stonehenge',
-	'TrCTF-Tartarus',
-	'TrCTF-TempleRuins',
-	'TrCTF-Blues',
-	'TrCTF-Incidamus',
-	'TrCTF-Periculo',
-	'TrCTF-Fracture',
-	'TrCTF-Phlegethon',
-	'TrCTF-DesertedValley',
-	'TrCTF-Acheron',
-	'TrCTF-Styx',
-	'TrArena-WalledIn',
-	'TrArena-Hinterlands',
-	'TrArena-FrayTown',
-	'TrArena-Undercroft',
-	'TrArena-AirArena',
-	'TrArena-LavaArena',
-	'TrArena-Whiteout',
-	'TrArena-ElysianBattleground',
-	'TrRabbit-Nightabatic',
-	'TrRabbit-SulfurCove',
-	'TrRabbit-Inferno',
-	'TrRabbit-Crossfire',
-	'TrRabbit-Outskirts',
-	'TrRabbit-Quicksand',
-	'TrTDM-Outskirts',
-	'TrTDM-Quicksand',
-	'TrTDM-SulfurCove',
-	'TrTDM-DrydockNight',
-	'TrTDM-Nightabatic',
-	'TrTDM-Inferno',
-	'TrTDM-Miasma',
-	'TrCTFBlitz-ArxNovena',
-	'TrCTFBlitz-BellaOmega',
-	'TrCTFBlitz-Blueshift',
-	'TrCTFBlitz-Crossfire',
-	'TrCTFBlitz-CanyonCrusadeRevival',
-	'TrCTFBlitz-Drydock',
-	'TrCTFBlitz-Hellfire',
-	'TrCTFBlitz-IceCoaster',
-	'TrCTFBlitz-Katabatic',
-	'TrCTFBlitz-Broadside',
-	'TrCaH-Outskirts',
-	'TrCaH-Katabatic',
-	'TrCaH-Raindance',
-	'TrCaH-SulfurCove',
-	'TrCaH-Tartarus',
-	'TrCaH-CanyonCrusadeRevival',
-	'TrTraining-Crossfire',
-	'TrTraining-SkiTutorial',
-	'TrTraining-TutorialAdv'
-] as const;
+export type InternalMapName = (string & {})
+	| 'TrArena-Airarena'
+	| 'TrArena-ElysianBattleground'
+	| 'TrArena-Fraytown'
+	| 'TrArena-Hinterland'
+	| 'TrArena-Lavarena'
+	| 'TrArena-Ruins'
+	| 'TrArena-Undercroft'
+	| 'TrArena-Walledin'
+	| 'TrArena-Whiteout'
+	| 'TrCTF-Acheron'
+	| 'TrCTF-Andromeda'
+	| 'TrCTF-ArxNovena'
+	| 'TrCTF-Ascent'
+	| 'TrCTF-BellaOmega'
+	| 'TrCTF-BellaOmegaNS'
+	| 'TrCTF-Blues'
+	| 'TrCTF-Blueshift'
+	| 'TrCTF-CanyonCrusadeRev'
+	| 'TrCTF-Crash'
+	| 'TrCTF-Crossfire'
+	| 'TrCTF-DangerousCrossing'
+	| 'TrCTF-DesertedValley'
+	| 'TrCTF-Drydock'
+	| 'TrCTF-Eclipse'
+	| 'TrCTF-Fracture'
+	| 'TrCTF-Hellfire'
+	| 'TrCTF-Icecoaster'
+	| 'TrCTF-Incidamus'
+	| 'TrCTF-Katabatic'
+	| 'TrCTF-Meridian'
+	| 'TrCTF-Oceanus'
+	| 'TrCTF-Perdition'
+	| 'TrCTF-Periculo'
+	| 'TrCTF-Permafrost'
+	| 'TrCTF-Phlegethon'
+	| 'TrCTF-Polaris'
+	| 'TrCTF-Raindance'
+	| 'TrCTF-RuinsOfHarabec'
+	| 'TrCTF-Stonehenge2'
+	| 'TrCTF-Styx'
+	| 'TrCTF-SunStar'
+	| 'TrCTF-Tartarus'
+	| 'TrCTF-Terminus'
+	| 'TrCTF-TreacherousPass'
+	| 'TrCTFBlitz-AirArena'
+	| 'TrCTFBlitz-ArxNovena'
+	| 'TrCTFBlitz-BellaOmega'
+	| 'TrCTFBlitz-Blueshift'
+	| 'TrCTFBlitz-Broadside'
+	| 'TrCTFBlitz-CanyonCrusadeRev'
+	| 'TrCTFBlitz-Crossfire'
+	| 'TrCTFBlitz-Drydock'
+	| 'TrCTFBlitz-Hellfire'
+	| 'TrCTFBlitz-Icecoaster'
+	| 'TrCTFBlitz-Katabatic'
+	| 'TrCTFBlitz-MazeRunner'
+	| 'TrCaH-ArxOutskirts_3p'
+	| 'TrCaH-CanyonCrusadeRev'
+	| 'TrCaH-CrossfireSmall'
+	| 'TrCaH-Drydock'
+	| 'TrCaH-Katabatic'
+	| 'TrCaH-Raindance'
+	| 'TrCaH-Tartarus'
+	| 'TrRabbit-ArxNovena'
+	| 'TrRabbit-BellaOmega'
+	| 'TrRabbit-Crossfire'
+	| 'TrRabbit-CrossfireSmall'
+	| 'TrRabbit-Harabec'
+	| 'TrRabbit-NightKatabatic'
+	| 'TrTeamRabbit-ArxNovena'
+	| 'TrTeamRabbit-BellaOmega'
+	| 'TrTeamRabbit-Crossfire'
+	| 'TrTeamRabbit-CrossfireSmall'
+	| 'TrTeamRabbit-Drydock'
+	| 'TrTeamRabbit-Harabec'
+	| 'TrTeamRabbit-Miasma'
+	| 'TrTeamRabbit-NightKatabatic'
+	| 'TrTeamRabbit-Perdition'
+	| 'TrTraining-Crossfire'
+	| 'TrTraining-SkiTutorial'
+	| 'TrTraining-TutorialAdv';

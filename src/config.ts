@@ -1,5 +1,5 @@
 import { join } from 'node:path/posix';
-import type { maps } from './maps.js';
+import type { InternalMapName } from './maps.js';
 import { Team } from './teams.js';
 
 /**
@@ -11,7 +11,7 @@ export class Config {
 	host?: string;
 	log = false;
 	logPath = join(process.cwd(), 'logs');
-	map?: (typeof maps)[number];
+	map?: InternalMapName;
 	position = {
 		x: 0,
 		y: 0

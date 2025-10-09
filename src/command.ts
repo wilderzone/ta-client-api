@@ -1,6 +1,5 @@
 import { join } from 'node:path/posix';
 import type { Config } from './config.js';
-import { maps } from './maps.js';
 
 interface LaunchCommand {
 	path: string;
@@ -22,7 +21,7 @@ export function createLaunchCommand (config: Config): LaunchCommand {
 
 	// Map / Remote server.
 	// Must be the first argument (or first after 'server').
-	if ((config.map && maps.includes(config.map)) || config.remoteAddress) {
+	if (config.map || config.remoteAddress) {
 		let destination = config.map || `${config.remoteAddress}:${config.remotePort}`;
 		if (!config.server && typeof config.team === 'number' && !isNaN(config.team)) {
 			destination += `?TEAM=${config.team}`;
